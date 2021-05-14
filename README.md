@@ -1,2 +1,1 @@
-# advertising-system
-A simple advertising system
+# ip project
