@@ -1,3 +1,3 @@
-from adsystem import create_app
+from ipproject import create_app
 
 app = create_app()

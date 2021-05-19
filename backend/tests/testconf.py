@@ -4,8 +4,8 @@ from alembic import command
 from alembic.config import Config
 from starlette.testclient import TestClient
 
-from adsystem import create_app, db
-from adsystem.config import DB_URL, ADMIN_USERNAME, ADMIN_PASSWORD
+from ipproject import create_app, db
+from ipproject.config import DB_URL, ADMIN_USERNAME, ADMIN_PASSWORD
 
 
 @pytest.fixture(autouse=True)

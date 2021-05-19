@@ -14,7 +14,7 @@ from alembic import context
 # access to the values within the .ini file in use.
 config = context.config
 
-from adsystem import db as target_metadata, DB_URL
+from ipproject import db as target_metadata, DB_URL
 
 config.set_main_option('sqlalchemy.url', str(DB_URL))
 
