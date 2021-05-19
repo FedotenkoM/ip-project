@@ -21,7 +21,7 @@ def upgrade():
     op.create_table('masters',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=50), nullable=False),
-    sa.Column('phone', sa.String(length=10), nullable=False),
+    sa.Column('phone', sa.String(length=11), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('username')
     )
