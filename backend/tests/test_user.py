@@ -41,8 +41,7 @@ def test_create_user(client):
             'username': 'test_demo',
             'password': 'test_demo',
             'email': 'test@mail.com',
-            'roleId': 3,
-            'displayName': 'Иван Петров',
+            'roleId': 2,
         }
     )
 
@@ -60,8 +59,7 @@ def test_create_non_unique_user(client):
             'username': 'test_demo',
             'password': 'test_demo',
             'email': 'test@mail.com',
-            'roleId': 3,
-            'displayName': 'Иван Петров',
+            'roleId': 2,
         }
     )
 
@@ -89,8 +87,7 @@ def test_permissions(client):
             'username': 'test_demo',
             'password': 'test_demo',
             'email': 'test@mail.com',
-            'roleId': 3,
-            'displayName': 'Иван Петров',
+            'roleId': 2,
         }
     )
 
