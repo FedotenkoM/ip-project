@@ -85,8 +85,8 @@ class Users(HTTPEndpoint):
         }
     }, custom_checks={
         'password': {
-            'func': validate_password,  # 'func': lambda v, *args: validate_password(v),
-            'message': lambda v, *args: 'Не корректный пароль!'
+            'func': validate_password,
+            'message': lambda *args: 'Не корректный пароль!'
         },
         'email': {
             # with the pyDNS, it will be better
@@ -137,6 +137,7 @@ class User(HTTPEndpoint):
             'type': str,
             'min_length': 5,
             'max_length': 30,
+            'password': True,
         },
         'email': {
             'type': str,
@@ -156,6 +157,10 @@ class User(HTTPEndpoint):
         'role': {
             'func': validate_role,
             'message': lambda v, *args: f'Роль с `id` `{v}` не существует.'
+        },
+        'password': {
+            'func': validate_password,
+            'message': lambda *args: 'Не корректный пароль!'
         }
     }, return_request=True)
     async def patch(self, request, data):

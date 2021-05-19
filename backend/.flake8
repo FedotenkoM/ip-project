@@ -11,4 +11,5 @@ exclude =
     dist,
     migrations
     tests
+    venv
 max-complexity = 10
