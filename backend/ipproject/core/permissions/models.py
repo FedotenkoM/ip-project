@@ -1,4 +1,4 @@
-from adsystem.core.database import db
+from ipproject.core.database import db
 
 
 class PermissionModel(db.Model):

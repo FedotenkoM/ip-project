@@ -1,5 +1,5 @@
 from uuid import uuid4
-from adsystem.config import ADMIN_USERNAME, ADMIN_PASSWORD, TESTING, DB_URL
+from ipproject.config import ADMIN_USERNAME, ADMIN_PASSWORD, TESTING, DB_URL
 
 from tests.testconf import get_access_token, client, setup
 

@@ -1,6 +1,6 @@
 from gino_starlette import Gino
 from gino.dialects.asyncpg import AsyncEnum
-from adsystem.config import (
+from ipproject.config import (
     DB_HOST, DB_USER, DB_DATABASE, DB_PASSWORD, DB_PORT, USE_SSL
 )
 
