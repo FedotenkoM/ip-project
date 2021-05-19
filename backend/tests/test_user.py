@@ -1,5 +1,5 @@
 from uuid import uuid4
-from adsystem.config import ADMIN_USERNAME, ADMIN_PASSWORD, TESTING, DB_URL
+from ipproject.config import ADMIN_USERNAME, ADMIN_PASSWORD, TESTING, DB_URL
 
 from tests.testconf import get_access_token, client, setup
 
@@ -39,10 +39,9 @@ def test_create_user(client):
         headers={'Authorization': f'Bearer {access_token}'},
         json={
             'username': 'test_demo',
-            'password': 'test_demo',
+            'password': 'ABcd12!@',
             'email': 'test@mail.com',
-            'roleId': 3,
-            'displayName': 'Иван Петров',
+            'roleId': 2,
         }
     )
 
@@ -58,10 +57,9 @@ def test_create_non_unique_user(client):
         headers={'Authorization': f'Bearer {access_token}'},
         json={
             'username': 'test_demo',
-            'password': 'test_demo',
+            'password': 'ABcd12!@',
             'email': 'test@mail.com',
-            'roleId': 3,
-            'displayName': 'Иван Петров',
+            'roleId': 2,
         }
     )
 
@@ -77,7 +75,7 @@ def test_permissions(client):
     response = client.post(
         '/api/users/refresh-tokens', json={
             'identifier': 'test_demo',
-            'password': 'test_demo',
+            'password': 'ABcd12!@',
         }
     )
     access_token = response.json()['access_token']
@@ -87,10 +85,9 @@ def test_permissions(client):
         headers={'Authorization': f'Bearer {access_token}'},
         json={
             'username': 'test_demo',
-            'password': 'test_demo',
+            'password': 'ABcd12!@',
             'email': 'test@mail.com',
-            'roleId': 3,
-            'displayName': 'Иван Петров',
+            'roleId': 2,
         }
     )
 

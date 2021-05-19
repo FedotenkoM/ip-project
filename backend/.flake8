@@ -5,10 +5,12 @@ exclude =
     temp,
     logs,
     .venv,
+    venv
     *.json,
     old,
     build,
     dist,
     migrations
     tests
+    venv
 max-complexity = 10

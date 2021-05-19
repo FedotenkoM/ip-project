@@ -1,9 +1,9 @@
 from starlette.routing import Route, Mount
 from starlette.responses import JSONResponse
 
-from .users.resources import routes as user_routes
-from .roles.resources import routes as roles_routes
-from .permissions.resources import get_apps
+from ipproject.core.users.resources import routes as user_routes
+from ipproject.core.roles.resources import routes as roles_routes
+from ipproject.core.permissions.resources import get_apps
 
 
 async def ping(request):

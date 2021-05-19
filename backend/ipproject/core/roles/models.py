@@ -1,4 +1,4 @@
-from ..database import db
+from ipproject.core.database import db
 
 
 class RoleModel(db.Model):

@@ -9,9 +9,7 @@ from alembic import op
 import sqlalchemy as sa
 from passlib.hash import pbkdf2_sha256 as sha256
 from uuid import uuid4
-from adsystem.config import (
-    ADMIN_DISPLAY_NAME, ADMIN_EMAIL, ADMIN_PASSWORD, ADMIN_USERNAME,
-)
+from ipproject.config import ADMIN_EMAIL, ADMIN_PASSWORD, ADMIN_USERNAME
 
 
 # revision identifiers, used by Alembic.
@@ -93,7 +91,7 @@ def upgrade():
             {
                 'username': 'demo',
                 'password': sha256.hash('demo'),
-                'email': 'demo@adsystem.ru',
+                'email': 'demo@ipproject.ru',
                 'session': str(uuid4()),
                 'role_id': 2,
             },
