@@ -39,7 +39,7 @@ def test_create_user(client):
         headers={'Authorization': f'Bearer {access_token}'},
         json={
             'username': 'test_demo',
-            'password': 'test_demo',
+            'password': 'ABcd12!@',
             'email': 'test@mail.com',
             'roleId': 2,
         }
@@ -57,7 +57,7 @@ def test_create_non_unique_user(client):
         headers={'Authorization': f'Bearer {access_token}'},
         json={
             'username': 'test_demo',
-            'password': 'test_demo',
+            'password': 'ABcd12!@',
             'email': 'test@mail.com',
             'roleId': 2,
         }
@@ -75,7 +75,7 @@ def test_permissions(client):
     response = client.post(
         '/api/users/refresh-tokens', json={
             'identifier': 'test_demo',
-            'password': 'test_demo',
+            'password': 'ABcd12!@',
         }
     )
     access_token = response.json()['access_token']
@@ -85,7 +85,7 @@ def test_permissions(client):
         headers={'Authorization': f'Bearer {access_token}'},
         json={
             'username': 'test_demo',
-            'password': 'test_demo',
+            'password': 'ABcd12!@',
             'email': 'test@mail.com',
             'roleId': 2,
         }

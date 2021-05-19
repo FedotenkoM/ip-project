@@ -12,7 +12,7 @@ from ..utils import (
     make_response, NO_CONTENT, get_one,
 )
 from ..models import UserModel, PermissionAction
-from .utils import is_username_unique, validate_role
+from .utils import is_username_unique, validate_role, validate_password
 
 permissions = Permissions(app_name='users')
 
@@ -71,6 +71,7 @@ class Users(HTTPEndpoint):
             'type': str,
             'min_length': 5,
             'max_length': 50,
+            'password': True,
         },
         'email': {
             'required': True,
@@ -83,6 +84,10 @@ class Users(HTTPEndpoint):
             'role': True,
         }
     }, custom_checks={
+        'password': {
+            'func': validate_password,
+            'message': lambda *args: 'Не корректный пароль!'
+        },
         'email': {
             # with the pyDNS, it will be better
             'func': lambda v, *args: validate_email(v),
@@ -132,6 +137,7 @@ class User(HTTPEndpoint):
             'type': str,
             'min_length': 5,
             'max_length': 30,
+            'password': True,
         },
         'email': {
             'type': str,
@@ -151,6 +157,10 @@ class User(HTTPEndpoint):
         'role': {
             'func': validate_role,
             'message': lambda v, *args: f'Роль с `id` `{v}` не существует.'
+        },
+        'password': {
+            'func': validate_password,
+            'message': lambda *args: 'Не корректный пароль!'
         }
     }, return_request=True)
     async def patch(self, request, data):
