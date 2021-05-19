@@ -1,4 +1,4 @@
-from ..database import db
+from adsystem.core.database import db
 
 
 class RoleModel(db.Model):
