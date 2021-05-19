@@ -5,6 +5,7 @@ exclude =
     temp,
     logs,
     .venv,
+    venv
     *.json,
     old,
     build,
