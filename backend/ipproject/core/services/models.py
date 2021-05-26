@@ -11,6 +11,6 @@ class ServiceModel(db.Model):
     def jsonify(self):
         return {
             'id': self.id,
-            'service_name': self.username,
+            'service_name': self.service_name,
             'price': self.price
         }
