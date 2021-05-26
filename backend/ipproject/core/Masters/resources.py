@@ -6,7 +6,8 @@ from ipproject.core.database import db
 from ipproject.core.Masters.models import MasterModel
 from ipproject.core.permissions.models import PermissionAction
 from ipproject.core.utils import (
-    make_error, Permissions, jwt_required, make_response, GinoQueryHelper, make_list_response,
+    make_error, Permissions, jwt_required, make_response,
+    GinoQueryHelper, make_list_response,
     NO_CONTENT, with_transaction, validation
 )
 permissions = Permissions(app_name='masters')
