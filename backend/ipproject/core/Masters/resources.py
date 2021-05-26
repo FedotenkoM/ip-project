@@ -56,13 +56,13 @@ class Masters(HTTPEndpoint):
     @permissions.required(action=PermissionAction.CREATE)
     @validation(schema={
         'username': {
-            'required': False,
+            'required': True,
             'type': str,
             'min_length': 4,
             'max_length': 50,
         },
         'phone': {
-            'required': False,
+            'required': True,
             'type': str,
             'min_length': 11,
             'max_length': 11,
@@ -126,6 +126,6 @@ async def ping(request):
 
 routes = [
     Route('/', Masters),
-    Route('/', Master),
+    Route('/{master_id:int}', Master),
     Route('/ping', ping, methods=['GET'])
 ]
