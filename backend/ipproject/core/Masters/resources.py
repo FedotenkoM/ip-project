@@ -121,11 +121,12 @@ class Master(HTTPEndpoint):
         return NO_CONTENT
 
 
-async def ping(request):
-    return JSONResponse({'onPing': 'wePong'})
+@jwt_required
+async def get_actions(request, user):
+    return make_response(await permissions.get_actions(user.role_id))
 
 routes = [
     Route('/', Masters),
     Route('/{master_id:int}', Master),
-    Route('/ping', ping, methods=['GET'])
+    Route('/actions', get_actions, methods=['GET']),
 ]
