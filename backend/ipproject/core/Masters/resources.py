@@ -25,7 +25,7 @@ class Masters(HTTPEndpoint):
 
         if 'search' in query_params:
             current_query, total_query = GinoQueryHelper.search(
-                MasterModel.display_name,
+                MasterModel.username,
                 query_params['search'],
                 current_query,
                 total_query
@@ -38,7 +38,7 @@ class Masters(HTTPEndpoint):
             query_params,
             current_query, {
                 'id': MasterModel.id,
-                'name': MasterModel.name,
+                'username': MasterModel.username,
                 'phone': MasterModel.phone,
                 }
         )
@@ -55,14 +55,12 @@ class Masters(HTTPEndpoint):
     @jwt_required
     @permissions.required(action=PermissionAction.CREATE)
     @validation(schema={
-        'name': {
-            'required': True,
+        'username': {
             'type': str,
             'min_length': 4,
             'max_length': 50,
         },
         'phone': {
-            'required': True,
             'type': str,
             'min_length': 11,
             'max_length': 11,
@@ -70,7 +68,7 @@ class Masters(HTTPEndpoint):
     })
     async def post(self, data):
         new_master = await MasterModel.create(
-            name=data['name'],
+            username=data['username'],
             phone=data['phone'],
         )
         return make_response({'id': new_master.id})
@@ -91,14 +89,12 @@ class Master(HTTPEndpoint):
     @jwt_required
     @permissions.required(action=PermissionAction.UPDATE)
     @validation(schema={
-        'name': {
-            'required': True,
+        'username': {
             'type': str,
             'min_length': 4,
             'max_length': 50,
         },
         'phone': {
-            'required': True,
             'type': str,
             'min_length': 11,
             'max_length': 11,
@@ -113,7 +109,7 @@ class Master(HTTPEndpoint):
                 status_code=404
             )
         values = {
-            'name': data['name'] if 'name' in data else None,
+            'username': data['name'] if 'username' in data else None,
             'phone': data['phone'] if 'phone' in data else None,
         }
         values = dict(filter(lambda item: item[1] is not None, values.items()))
@@ -126,5 +122,6 @@ async def ping(request):
 
 routes = [
     Route('/', Masters),
+    Route('/', Master),
     Route('/ping', ping, methods=['GET'])
 ]

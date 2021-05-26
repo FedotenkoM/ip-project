@@ -11,12 +11,9 @@ async def ping(request):
     return JSONResponse({'onPing': 'wePong'})
 
 routes = [
-    Route('/ping', ping, methods=['GET']),
     Route('/ping', ping),
     Route('/apps', get_apps, methods=['GET']),
     Mount('/users', routes=user_routes),
     Mount('/roles', routes=roles_routes),
     Mount('/masters', routes=master_routes)
 ]
-
-__all__ = ['routes']
