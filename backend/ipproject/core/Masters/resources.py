@@ -122,8 +122,8 @@ class Master(HTTPEndpoint):
 
 
 @jwt_required
-async def get_actions(request, user):
-    return make_response(await permissions.get_actions(user.role_id))
+async def get_actions(request, master):
+    return make_response(await permissions.get_actions(master))
 
 routes = [
     Route('/', Masters),
