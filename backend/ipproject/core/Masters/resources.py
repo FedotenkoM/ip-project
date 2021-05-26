@@ -56,11 +56,13 @@ class Masters(HTTPEndpoint):
     @permissions.required(action=PermissionAction.CREATE)
     @validation(schema={
         'username': {
+            'required': False,
             'type': str,
             'min_length': 4,
             'max_length': 50,
         },
         'phone': {
+            'required': False,
             'type': str,
             'min_length': 11,
             'max_length': 11,
@@ -90,11 +92,13 @@ class Master(HTTPEndpoint):
     @permissions.required(action=PermissionAction.UPDATE)
     @validation(schema={
         'username': {
+            'required': False,
             'type': str,
             'min_length': 4,
             'max_length': 50,
         },
         'phone': {
+            'required': False,
             'type': str,
             'min_length': 11,
             'max_length': 11,
