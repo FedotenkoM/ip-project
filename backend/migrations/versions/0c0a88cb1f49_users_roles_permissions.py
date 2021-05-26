@@ -69,13 +69,25 @@ def upgrade():
 
     connection.execute(
         sa.insert(t_permissions).values([
-            # Admin
+            # Пользователи
             {'app_name': 'users', 'action': 'all', 'role_id': 1},
-            # TODO: it needs more permissions
-
-            # demo
             {'app_name': 'users', 'action': 'get', 'role_id': 2},
-            # TODO: it needs more permissions
+
+            # Специалисты
+            {'app_name': 'masters', 'action': 'all', 'role_id': 1},
+            {'app_name': 'masters', 'action': 'get', 'role_id': 2},
+
+            # Роли
+            {'app_name': 'roles', 'action': 'all', 'role_id': 1},
+            {'app_name': 'roles', 'action': 'get', 'role_id': 2},
+
+            # Работы
+            {'app_name': 'works', 'action': 'all', 'role_id': 1},
+            {'app_name': 'works', 'action': 'get', 'role_id': 2},
+
+            # Услуги
+            {'app_name': 'services', 'action': 'all', 'role_id': 1},
+            {'app_name': 'services', 'action': 'get', 'role_id': 2},
         ])
     )
 
