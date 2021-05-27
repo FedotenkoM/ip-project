@@ -12,6 +12,6 @@ class MasterModel(db.Model):
     def jsonify(self):
         return {
             'id': self.id,
-            'name': self.name,
+            'username': self.username,
             'phone': self.phone
         }
